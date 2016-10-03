@@ -1,7 +1,9 @@
 package com.company;
 
-
 public class Main {
+  /*
+   *Starting point to the program.
+   */
   public static void main(String[] args) {
     MyCalculator calculator = new MyCalculator(); //create an object of the class MyCalculator
     System.out.println("Enter two numbers: ");
