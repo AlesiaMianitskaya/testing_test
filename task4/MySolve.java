@@ -1,17 +1,19 @@
-/*
+/**
  * Class MySolve solves quadratic equation
  */
 public class MySolve {
-  /*
-   * counts discriminant
-   * return discriminant equation
+  /**
+   * Counts discriminant
+   * @param a, b, c - console arguments
+   * @return discriminant equation
    */
   private double discriminant(double a, double b, double c) {
     return b * b - 4 * a * c;
   }
 
-  /*
-   * Finds the roots of the equation
+  /**
+   * Finds the roots of the equation and prints result
+   * @param a, b, c - console arguments
    */
   public void solve(double a, double b, double c) {
     double x1, x2;
