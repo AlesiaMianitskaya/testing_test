@@ -4,7 +4,10 @@
 public class MySolve {
   /**
    * Counts discriminant
-   * @param a, b, c - console arguments
+   *
+   * @param a - console arguments
+   * @param b - console arguments
+   * @param c - console arguments
    * @return discriminant equation
    */
   private double discriminant(double a, double b, double c) {
@@ -13,7 +16,10 @@ public class MySolve {
 
   /**
    * Finds the roots of the equation and prints result
-   * @param a, b, c - console arguments
+   *
+   * @param a - console arguments
+   * @param b - console arguments
+   * @param c - console arguments
    */
   public void solve(double a, double b, double c) {
     double x1, x2;

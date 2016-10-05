@@ -1,21 +1,25 @@
 import java.util.Scanner;
 
 /**
- * Starting point of the program
+ * Starting point of the program,
+ * finding real roots of a quadratic
+ * equation
  */
 public class Main {
   /**
-   * Enter coefficients of the equation
+   * Enter coefficients of the
+   * equation and output roots
+   *
+   * @param args - console arguments
    */
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    MySolve sv = new MySolve();
     System.out.println("Enter a, b, c for a*x^2 + b*x + c = 0: ");
     try {
+      MySolve sv = new MySolve();
       double a = sc.nextDouble();
       double b = sc.nextDouble();
       double c = sc.nextDouble();
-      // finds the roots of the equation
       sv.solve(a, b, c);
     } catch (Exception e) {
       System.out.println("Wrong data!");
