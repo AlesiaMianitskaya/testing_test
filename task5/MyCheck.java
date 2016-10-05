@@ -5,7 +5,9 @@ public class MyCheck {
   /**
    * Tests the existence of a triangle
    *
-   * @param a, b, c - console arguments
+   * @param a - console arguments
+   * @param b - console arguments
+   * @param c - console arguments
    * @return true, if triangle is, false otherwise
    */
   boolean check(double a, double b, double c) {
@@ -19,7 +21,9 @@ public class MyCheck {
   /**
    * Checks sides is zero
    *
-   * @param a, b, c - console arguments
+   * @param a - console arguments
+   * @param b - console arguments
+   * @param c - console arguments
    * @return true, if triangle isn't, false otherwise
    */
   boolean test(double a, double b, double c) {

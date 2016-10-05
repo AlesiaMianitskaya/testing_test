@@ -5,10 +5,12 @@ public class Triangle {
   /**
    * Decides if triangle isosceles
    *
-   * @param a, b, c - console arguments
+   * @param a - console arguments
+   * @param b - console arguments
+   * @param c - console arguments
    * @return true if triangle isosceles  otherwise false
    */
-  boolean isosceles(double a, double b, double c) {
+  boolean isIsosceles(double a, double b, double c) {
     if (Double.isInfinite(1 / (a - b)) || Double.isInfinite(1 / (b - c)) || Double.isInfinite(1 / (a - c))) {
       return true;
     } else {
@@ -19,10 +21,12 @@ public class Triangle {
   /**
    * Decides if triangle equilateral
    *
-   * @param a, b, c - console arguments
+   * @param a - console arguments
+   * @param b - console arguments
+   * @param c - console arguments
    * @return true if triangle is equilateral otherwise false
    */
-  boolean equilateral(double a, double b, double c) {
+  boolean isEquilateral(double a, double b, double c) {
     if (Double.isInfinite(1 / (a - b)) && Double.isInfinite(1 / (b - c))) {
       return true;
     } else {
