@@ -11,10 +11,14 @@ public class Vocabulary {
    */
   public static boolean check(String line) {
     String[] wordbook = {"I", "like", "Java", "very", "much"};
+    String[] newLine = line.split("[\\p{Punct} ]+");
+
     int countTrue = 0;
-    for (int i = 0; i < wordbook.length; i++) {
-      if (line.contains(wordbook[i])) {
-        countTrue++;
+    for (int j = 0; j < newLine.length; j++) {
+      for (int i = 0; i < wordbook.length; i++) {
+        if (newLine[j].equals(wordbook[i])) {
+          countTrue++;
+        }
       }
     }
     if (countTrue != 0) {
