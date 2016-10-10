@@ -1,14 +1,14 @@
 /**
  * Rule two: string contains only numbers
  */
-public class Numbers {
+public class Numbers extends Builder{
   /**
    * Check rule two
    *
    * @param line - console argument
    * @return true if rule is done, false otherwise
    */
-  public static boolean check(String line) {
+  public boolean test(String line) {
     char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     int count = 0;
     char[] newLine = line.toCharArray();
