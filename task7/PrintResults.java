@@ -16,12 +16,12 @@ public class PrintResults {
       System.out.println("String is empty!");
       System.exit(0);
     }
-    if (!no.check(line) && !num.check(line) && !more.check(line) && !voc.check(line)) {
+    if (!no.test(line) && !num.test(line) && !more.test(line) && !voc.test(line)) {
       System.out.println("All rules fail!");
     }
-    System.out.println("Rule one: string doesn't contain numbers. It is " + no.check(line) + ".");
-    System.out.println("Rule two: string contains only numbers. It is " + num.check(line) + ".");
-    System.out.println("Rule three: string contains more than 5 words. It is " + more.check(line) + ".");
-    System.out.println("Rule four: string contains dictionary's words. It is " + voc.check(line) + ".");
+    System.out.println("Rule one: string doesn't contain numbers. It is " + no.test(line) + ".");
+    System.out.println("Rule two: string contains only numbers. It is " + num.test(line) + ".");
+    System.out.println("Rule three: string contains more than 5 words. It is " + more.test(line) + ".");
+    System.out.println("Rule four: string contains dictionary's words. It is " + voc.test(line) + ".");
   }
 }

@@ -2,14 +2,14 @@
  * Rules four: string contains dictionary's words
  * The dictionary is "I like Java very much"
  */
-public class Vocabulary {
+public class Vocabulary extends Builder{
   /**
    * Check rule three
    *
    * @param line - console argument
    * @return true if rule is done, false otherwise
    */
-  public static boolean check(String line) {
+  public boolean test(String line) {
     String[] wordbook = {"I", "like", "Java", "very", "much"};
     String[] newLine = line.split("[\\p{Punct} ]+");
 
