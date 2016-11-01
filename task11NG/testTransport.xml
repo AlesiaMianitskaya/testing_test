@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SuiteTestTransport" parallel="false">
+    <test name="BikeNG">
+        <classes>
+            <class name="BikeTest"/>
+        </classes>
+    </test>
+    <test name="BusNG">
+        <classes>
+            <class name="BusTest"/>
+        </classes>
+    </test>
+    <test name="CarNG">
+        <classes>
+            <class name="CarTest"/>
+        </classes>
+    </test>
+    <test name="OnFoodNG">
+        <classes>
+            <class name="OnFootTest"/>
+        </classes>
+    </test>
+</suite>
