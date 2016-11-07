@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 /**
  * class Triangle determines the type of triangle
  */
@@ -10,11 +12,10 @@ public class Triangle {
    * @param c - console arguments
    * @return true if triangle isosceles  otherwise false
    */
-  boolean isIsosceles(double a, double b, double c) {
-    boolean flagOneSide = Double.isInfinite(1 / (a - b)) && Math.abs(b - c) > 0;
-    boolean flagTwoSide = Double.isInfinite(1 / (b - c)) && Math.abs(a - b) > 0;
-    boolean flagThreeSide = Double.isInfinite(1 / (a - c)) && Math.abs(b - c) > 0;
-    if (flagOneSide || flagTwoSide || flagThreeSide) {
+  boolean isIsosceles(BigDecimal a, BigDecimal b, BigDecimal c) {
+    if ((a.compareTo(b) == 0 && c.compareTo(b) != 0) ||
+        (b.compareTo(c) == 0 && a.compareTo(b) != 0) ||
+        (a.compareTo(c) == 0 && b.compareTo(c) != 0)) {
       return true;
     } else {
       return false;
@@ -29,8 +30,8 @@ public class Triangle {
    * @param c - console arguments
    * @return true if triangle is equilateral otherwise false
    */
-  boolean isEquilateral(double a, double b, double c) {
-    if (Double.isInfinite(1 / (a - b)) && Double.isInfinite(1 / (b - c))) {
+  boolean isEquilateral(BigDecimal a, BigDecimal b, BigDecimal c) {
+    if (a.compareTo(b) == 0 && b.compareTo(c) == 0) {
       return true;
     } else {
       return false;

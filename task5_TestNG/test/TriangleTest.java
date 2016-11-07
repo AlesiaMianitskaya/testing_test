@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,21 +17,33 @@ public class TriangleTest {
 
   @Test
   public void testIsEquilateralTrue() throws Exception {
-    assertTrue(triangle.isEquilateral(5.0, 5.0, 5.0));
+    BigDecimal a = BigDecimal.valueOf(5.0);
+    BigDecimal b = BigDecimal.valueOf(5.0);
+    BigDecimal c = BigDecimal.valueOf(5.0);
+    assertTrue(triangle.isEquilateral(a, b, c));
   }
 
   @Test
   public void testIsEquilateralFalse() throws Exception {
-    assertFalse(triangle.isEquilateral(5.0, 5.0, 4.0));
+    BigDecimal a = BigDecimal.valueOf(5.0);
+    BigDecimal b = BigDecimal.valueOf(5.0);
+    BigDecimal c = BigDecimal.valueOf(4.0);
+    assertFalse(triangle.isEquilateral(a, b, c));
   }
 
   @Test
   public void testIsIsoscelesTrue() throws Exception {
-    assertTrue(triangle.isIsosceles(6, 8, 6));
+    BigDecimal a = BigDecimal.valueOf(6.0);
+    BigDecimal b = BigDecimal.valueOf(8.0);
+    BigDecimal c = BigDecimal.valueOf(6.0);
+    assertTrue(triangle.isIsosceles(a, b, c));
   }
 
   @Test
   public void testIsIsoscelesFalse() throws Exception {
-    assertFalse(triangle.isIsosceles(6, 6, 6));
+    BigDecimal a = BigDecimal.valueOf(6.0);
+    BigDecimal b = BigDecimal.valueOf(6.0);
+    BigDecimal c = BigDecimal.valueOf(6.0);
+    assertFalse(triangle.isIsosceles(a, b, c));
   }
 }

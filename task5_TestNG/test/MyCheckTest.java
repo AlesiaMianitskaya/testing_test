@@ -2,6 +2,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.math.BigDecimal;
+
 import static org.testng.AssertJUnit.assertEquals;
 
 public class MyCheckTest {
@@ -16,16 +18,22 @@ public class MyCheckTest {
   @DataProvider(name = "dataForZero")
   public Object[][] createZero() {
     return new Object[][]{
-        {false, new Double(0.0), new Double(3.6), new Double(7.5)},
-        {false, new Double(6.8), new Double(0.0), new Double(4.6)},
-        {false, new Double(6.8), new Double(4.6), new Double(0.0)},
-        {false, new Double(0.0), new Double(0.0), new Double(0.0)}
+        {false, 0.0, 3.6, 7.5},
+        {false, 6.8, 0.0, 4.6},
+        {false, 6.8, 4.6, 0.0},
+        {false, 0.0, 4.6, 0.0},
+        {false, 4.6, 0.0, 0.0},
+        {false, 0.0, 0.0, 4.6},
+        {false, 0.0, 0.0, 0.0}
     };
   }
 
   @Test(dataProvider = "dataForZero")
-  public void testCheckZero(boolean expected, Double a, Double b, Double c) throws Exception {
-    assertEquals(expected, myCheck.checkZero(a, b, c));
+  public void testCheckZero(boolean expected, double a, double b, double c) throws Exception {
+    BigDecimal sideOne = BigDecimal.valueOf(a);
+    BigDecimal sideTwo = BigDecimal.valueOf(b);
+    BigDecimal sideThree = BigDecimal.valueOf(c);
+    assertEquals(expected, myCheck.checkZero(sideOne, sideTwo, sideThree));
   }
 
   @DataProvider(name = "sidePositive")
@@ -36,47 +44,68 @@ public class MyCheckTest {
         {true, 3.7, 4.8, 5.6},
         {true, 100, 120, 150},
         {true, Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE},
-        {true, Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE}
+        {true, Double.MAX_VALUE, Double.MAX_VALUE, 0.0001},
+        {true, 0.0001, Double.MAX_VALUE, Double.MAX_VALUE},
+        {true, Double.MAX_VALUE, 0.0001, Double.MAX_VALUE},
+        {true, Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
+        {true, Double.MIN_VALUE, 0.0001, 0.0001},
+        {true, 0.0001, Double.MIN_VALUE, 0.0001},
+        {true, 0.0001, 0.0001, Double.MIN_VALUE}
     };
   }
 
-
   @Test(dataProvider = "sidePositive")
   public void testCheckExistPositive(boolean expected, double a, double b, double c) throws Exception {
-    assertEquals(expected, myCheck.checkExist(a, b, c));
+    BigDecimal sideOne = BigDecimal.valueOf(a);
+    BigDecimal sideTwo = BigDecimal.valueOf(b);
+    BigDecimal sideThree = BigDecimal.valueOf(c);
+    assertEquals(expected, myCheck.checkExist(sideOne, sideTwo, sideThree));
   }
 
   @DataProvider(name = "sideNegative")
   public Object[][] createNegativeSide() {
     return new Object[][]{
-        {false, Double.NaN, 5.0, 6.0},
-        {false, 5.0, Double.NaN, 6.0},
-        {false, 5.0, 6.0, Double.NaN},
         {false, Double.MAX_VALUE, 5.0, 6.0},
         {false, 5.0, Double.MAX_VALUE, 6.0},
         {false, 5.0, 6.0, Double.MAX_VALUE},
-        {false, Double.MIN_VALUE, 0.0001, 0.0001},
-        {false, 0.0001, Double.MIN_VALUE, 0.0001},
-        {false, 0.0001, 0.0001, Double.MIN_VALUE},
-        {false, Double.POSITIVE_INFINITY, 6.8, 6.8},
-        {false, 6.8, Double.POSITIVE_INFINITY, 6.8},
-        {false, 4.5, 6.9, Double.POSITIVE_INFINITY},
+        {false, Double.MIN_VALUE, 0.001, 3.0},
+        {false, 0.001, Double.MIN_VALUE, 3.0},
+        {false, 0.1, 3.0, Double.MIN_VALUE},
         {false, -9.0, 4.5, 6.1},
         {false, 9.0, -4.5, 6.1},
         {false, 9.0, 4.5, -6.1},
-        {false, Double.NEGATIVE_INFINITY, 6.8, 6.8},
-        {false, 6.8, Double.NEGATIVE_INFINITY, 6.8},
-        {false, 4.5, 6.9, Double.NEGATIVE_INFINITY},
-        {false, null, 6.9, 4.5},
-        {false, 9.0, null, 4.5},
-        {false, 9.0, 6.9, null},
-        {false, null, null, null},
-        {false, 1 / 2, 3 / 5, 6 / 8}
+        {false, -9.0, -4.5, -6.1},
+        {false, 1 / 2, 8 / 2, 10 / 2},
+        {false, -1 / 2, -8 / 2, -10 / 2},
     };
   }
 
   @Test(dataProvider = "sideNegative")
   public void testCheckExistNegative(boolean expected, double a, double b, double c) {
-    assertEquals(expected, myCheck.checkExist(a, b, c));
+    BigDecimal sideOne = BigDecimal.valueOf(a);
+    BigDecimal sideTwo = BigDecimal.valueOf(b);
+    BigDecimal sideThree = BigDecimal.valueOf(c);
+    assertEquals(expected, myCheck.checkExist(sideOne, sideTwo, sideThree));
+  }
+
+  @DataProvider(name = "sideNull")
+  public Object[][] createNullSide() {
+    return new Object[][]{
+        {null, 6.9, 4.5},
+        {9.0, null, 4.5},
+        {9.0, 6.9, null},
+        {null, null, null},
+        {null, null, 4.5},
+        {9.0, null, null},
+        {null, 6.9, null}
+    };
+  }
+
+  @Test(dataProvider = "sideNull", expectedExceptions = IllegalArgumentException.class)
+  public void testCheckExistNull(double a, double b, double c) {
+    BigDecimal sideOne = BigDecimal.valueOf(a);
+    BigDecimal sideTwo = BigDecimal.valueOf(b);
+    BigDecimal sideThree = BigDecimal.valueOf(c);
+    myCheck.checkExist(sideOne, sideTwo, sideThree);
   }
 }

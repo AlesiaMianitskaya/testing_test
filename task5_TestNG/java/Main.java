@@ -1,4 +1,5 @@
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
@@ -6,13 +7,13 @@ import java.util.Scanner;
  */
 public class Main {
   public static void main(String[] args) {
-    double a, b, c;
+    BigDecimal a, b, c;//double a, b, c;
     Scanner side = new Scanner(System.in);
     System.out.println("Enter length of the sides of the triangle: ");
     try {
-      a = side.nextDouble();
-      b = side.nextDouble();
-      c = side.nextDouble();
+      a = side.nextBigDecimal();
+      b = side.nextBigDecimal();
+      c = side.nextBigDecimal();
 
       MyCheck ck = new MyCheck();
       Triangle tr = new Triangle();
