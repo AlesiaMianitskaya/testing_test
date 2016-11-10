@@ -17,7 +17,7 @@ public class Main {
 
       MyCheck ck = new MyCheck();
       Triangle tr = new Triangle();
-      if (!ck.checkExist(a, b, c) || !ck.checkZero(a, b, c)) {
+      if (!ck.checkExist(a, b, c)) {
         System.out.println("Triangle isn't exist.");
       } else {
         if (tr.isEquilateral(a, b, c)) {
