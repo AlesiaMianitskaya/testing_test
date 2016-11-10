@@ -4,17 +4,20 @@ import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 import static org.testng.AssertJUnit.assertEquals;
 
 public class MyCheckTest {
 
-  private static final String PATH = "D:\\JetBrains\\IdeaProjects\\project2\\dataForTriangle.xml";
+  private static final String PATH = ".\\dataForTriangle.xml";
   private static final String EXPECTED = "expected";
   private static final String NEGATIVE = "negative";
   private static final String POSITIVE = "positive";
@@ -25,6 +28,14 @@ public class MyCheckTest {
 
   private MyCheck myCheck;
 
+  public Document setDocument() throws ParserConfigurationException, IOException, SAXException {
+    File inputFile = new File(PATH);
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    Document document = builder.parse(inputFile);
+    return document;
+  }
+
   @BeforeMethod
   public void setMyCheck() {
     myCheck = new MyCheck();
@@ -32,11 +43,7 @@ public class MyCheckTest {
 
   @DataProvider(name = "dataNegativeFromXML")
   public Object[][] readNegativeXML() throws Exception {
-    File inputFile = new File(PATH);
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder builder = factory.newDocumentBuilder();
-
-    Document document = builder.parse(inputFile);
+    Document document = setDocument();
     NodeList nodes = document.getElementsByTagName(NEGATIVE);
     Object[][] result = new Object[nodes.getLength()][];
     for (int i = 0; i < nodes.getLength(); i++) {
@@ -58,11 +65,7 @@ public class MyCheckTest {
 
   @DataProvider(name = "dataPositiveFromXML")
   public Object[][] readPositiveXML() throws Exception {
-    File inputFile = new File(PATH);
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder builder = factory.newDocumentBuilder();
-
-    Document document = builder.parse(inputFile);
+    Document document = setDocument();
     NodeList nodes = document.getElementsByTagName(POSITIVE);
     Object[][] result = new Object[nodes.getLength()][];
     for (int i = 0; i < nodes.getLength(); i++) {
@@ -84,11 +87,7 @@ public class MyCheckTest {
 
   @DataProvider(name = "dataNullFromXML")
   public Object[][] readNullXML() throws Exception {
-    File inputFile = new File(PATH);
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder builder = factory.newDocumentBuilder();
-
-    Document document = builder.parse(inputFile);
+    Document document = setDocument();
     NodeList nodes = document.getElementsByTagName(NULL_SIDE);
     Object[][] result = new BigDecimal[nodes.getLength()][];
     for (int i = 0; i < nodes.getLength(); i++) {
