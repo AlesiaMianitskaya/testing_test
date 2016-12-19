@@ -6,5 +6,5 @@ vagrant ssh -c 'sudo sh /vagrant/data.sh; /bin/bash'--wait-exit
 
 echo "Test" 
 cd 
-cd D:\JetBrainsUltimate\Projects\Autotests 
+cd .\finalProject_last
 mvn test
