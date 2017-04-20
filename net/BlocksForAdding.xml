@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<blocks>
+  <block>
+    <set_of_change>CS4084</set_of_change>
+    <zone>Меню редактирования зоны</zone>
+    <type>Базовые элементы</type>
+    <name>StylesScripts</name> 
+  </block>
+  <block>
+    <set_of_change>CS4084</set_of_change>
+    <zone>Меню редактирования зоны</zone>
+    <type>Базовые элементы</type>
+    <name>StaticHtml</name>
+  </block>
+</blocks>

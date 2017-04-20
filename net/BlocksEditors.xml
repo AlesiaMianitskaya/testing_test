@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<editors>
+  <editor>
+    <name>История</name>
+    <set_of_change>CS4056</set_of_change>
+    <block_id>7312</block_id>
+  </editor>
+  <editor>
+    <name>Редактировать</name>
+    <set_of_change>CS4056</set_of_change>
+    <block_id>8318</block_id>
+  </editor>
+  <editor>
+    <name>Визуальный редактор</name>
+    <set_of_change>CS4056</set_of_change>
+    <block_id>8388</block_id>
+  </editor>
+  <editor>
+    <name>Html-редактор</name>
+    <set_of_change>CS4056</set_of_change>
+    <block_id>8388</block_id>
+  </editor>
+</editors>
